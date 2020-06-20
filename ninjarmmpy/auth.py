@@ -18,12 +18,15 @@ class NinjaAuthentication(AuthBase):
         self.timestamp = formatdate(timeval=None, localtime=False, usegmt=True)
 
 
-    def __call__(self, request):
-        unsigned = request.method + "\n"  # HTTP verb
-        unsigned += "\n"                  # Content MD5
-        unsigned += "\n"                  # Content type
-        unsigned += self.timestamp + "\n" # Date
-        unsigned += request.path_url      # Canonicalized resource
+    def __call__(self, request, **kwargs):
+        unsigned = request.method + "\n"                                    # HTTP verb
+        unsigned += "\n"                                                    # Content MD5
+        unsigned += "\n"                                                    # Content type
+        unsigned += self.timestamp + "\n"                                   # Date
+        if '?' in request.path_url:
+            unsigned += request.path_url.split('?')[0]                      # Canonicalized resource
+        else:
+            unsigned += ''.join(request.path_url.rpartition('/')[0:3])      # Canonicalized resource
 
         encoded = base64.b64encode(unsigned.encode((self.ENCODING)))
         digest = hmac.new(self.SecretAccessKey.encode(self.ENCODING), encoded, hashlib.sha1)
@@ -32,4 +35,5 @@ class NinjaAuthentication(AuthBase):
 
         request.headers[self.HEADER_AUTH] = f'NJ {self.AccessKeyID}:{signature.decode(self.ENCODING)}'
         request.headers[self.HEADER_DATE] = self.timestamp
+        print(request.path_url)
         return request
