@@ -62,7 +62,7 @@ class SystemMixin():
 
     @return_response
     def get_activities(self, activityClass: str = 'ALL', before: str = None, after: str = None,
-            olderThan: int = None, newerThan:int = None, type_: str = None,
+            olderThan: int = None, newerThan: int = None, activityType: str = None,
             status: str = None, user: str = None, seriesUid: str = None,
             df: str = None, pageSize: int = 200, lang: str = 'en', tz: str = None) -> requests.Response:
         """List activities
@@ -74,7 +74,7 @@ class SystemMixin():
         after:  str        -- Return activities recorded after the specified date
         olderThan: int     -- Return activities recorded that are older than specified activity ID
         newerThan: int     -- Return activities recorded that are newer than specified activity ID
-        TYPE: str          -- Return activities of type
+        activityType: str  -- Return activities of type
         status: str        -- Return activities with status(es)
         user: str          -- Return activities for user(s)
         seriesUid: str     -- Return activities related to alert (series)
@@ -89,7 +89,7 @@ class SystemMixin():
             'after': after,
             'olderThan': olderThan,
             'newerThan': newerThan,
-            'type': type_,
+            'type': activityType,
             'status': status,
             'user': user,
             'seriesUid': seriesUid,
