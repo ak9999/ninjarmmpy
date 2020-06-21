@@ -14,11 +14,11 @@ class GroupsMixin():
     # Organization info
     @return_response
     def get_group_device_ids(self, id: int = None, refresh: bool = None) -> requests.Response:
-        """Returns list of organizations (Brief mode)
+        """Returns list of device identifiers that match group criteria
 
         Keyword arguments:
         id: int       -- Group identifier, required, no default provided.
-        refresh: str  -- I honestly don't know
+        refresh: str  -- refresh group?
         """
         if not id:
             raise ValueError('id needs to be set to an organizational identifier.')
