@@ -35,5 +35,4 @@ class NinjaAuthentication(AuthBase):
 
         request.headers[self.HEADER_AUTH] = f'NJ {self.AccessKeyID}:{signature.decode(self.ENCODING)}'
         request.headers[self.HEADER_DATE] = self.timestamp
-        print(request.path_url)
         return request
