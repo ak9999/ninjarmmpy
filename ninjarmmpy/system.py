@@ -27,7 +27,7 @@ class SystemMixin():
 
     # Core system Entities and Resources
     @return_response
-    def get_organizations(self, pageSize: int = 999, after: int = 0) -> requests.Response:
+    def get_organizations(self, pageSize: int = None, after: int = None) -> requests.Response:
         """Returns list of organizations (Brief mode)
 
         Keyword arguments:
@@ -116,7 +116,7 @@ class SystemMixin():
 
 
     @return_response
-    def get_devices(self, df: str = None, pageSize: int = 50, after: int = 0) -> requests.Response:
+    def get_devices(self, df: str = None, pageSize: int = None, after: int = None) -> requests.Response:
         """List devices
         Returns list of devices (basic node information)
 
@@ -135,9 +135,7 @@ class SystemMixin():
 
     @return_response
     def get_policies(self) -> requests.Response:
-        """List policies
-        Returns list of policies
-        """
+        """Returns list of policies"""
         return self.api_get_request(self.NINJA_API_POLICIES)
 
 
@@ -148,7 +146,7 @@ class SystemMixin():
 
 
     @return_response
-    def get_devices_detailed(self, df: str = None, pageSize: int = 5, after: int = 0) -> requests.Response:
+    def get_devices_detailed(self, df: str = None, pageSize: int = None, after: int = None) -> requests.Response:
         """Returns list of devices with additional information"""
         params = {
             'df': df,
@@ -168,3 +166,61 @@ class SystemMixin():
             'tz': tz
         }
         return self.api_get_request(self.NINJA_API_ALERTS, params=params)
+
+
+    @return_response
+    def get_jobs(self, jobType: str = None, df: str = None, lang: str = None, tz: str = None) -> requests.Response:
+        """Returns a list of running jobs
+        Keyword arguments:
+        jobType: str        -- Job Type filter
+        df: str             -- Device filter
+        lang: str           -- Language tag
+        tz: str             -- Time Zone
+        """
+        params = {
+            'jobType': jobType,
+            'df': df,
+            'lang': lang,
+            'tz': tz
+        }
+        return self.api_get_request(self.NINJA_API_JOBS, params=params)
+
+
+    @return_response
+    def get_tasks(self) -> requests.Response:
+        """Returns a list of registered scheduled tasks"""
+        return self.api_get_request(self.NINJA_API_TASKS)
+    
+
+    @return_response
+    def get_organizations_detailed(self, pageSize: int = None, after: int = None) -> requests.Response:
+        """Returns a list of organizations with locations and policy mappings
+        Keyword arguments:
+        pageSize: int       -- Limit number of organizations to return
+        after: int          -- Last Organization Identifier from previous page
+        """
+        params = {
+            'pageSize': pageSize,
+            'after': after
+        }
+        return self.api_get_request(self.NINJA_API_ORGANIZATIONS_DETAILED, params=params)
+    
+
+    @return_response
+    def get_locations(self, pageSize: int = None, after: int = None) -> requests.Response:
+        """Returns a list of all locations for all organizations
+        Keyword arguments:
+        pageSize: int       -- Limit number of organizations to return
+        after: int          -- Last Organization Identifier from previous page
+        """
+        params = {
+            'pageSize': pageSize,
+            'after': after
+        }
+        return self.api_get_request(self.NINJA_API_LOCATIONS, params=params)
+    
+
+    @return_response
+    def get_roles(self) -> requests.Response:
+        """Returns a list of device roles"""
+        return self.api_get_request(self.NINJA_API_ROLES)
