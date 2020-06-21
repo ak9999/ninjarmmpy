@@ -1,8 +1,10 @@
 from ninjarmmpy.system import SystemMixin
+from ninjarmmpy.organization import OrganizationMixin
+from ninjarmmpy.groups import GroupsMixin
 from ninjarmmpy.auth import NinjaAuthentication
 
 
-class Client(SystemMixin):
+class Client(SystemMixin, OrganizationMixin, GroupsMixin):
     NINJA_API_US_BASE_URL = 'https://api.ninjarmm.com'
     NINJA_API_EU_BASE_URL = 'https://eu-api.ninjarmm.com'
 
