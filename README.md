@@ -17,4 +17,6 @@ This library is far from finished.
 
 ## Installation
 
-For now put the `ninjarmmpy` folder in your project and import it. I haven't created a real package yet.
+Not on PyPI yet, but you can run the following to install the module + dependencies:
+
+`pip install git+https://github.com/ak9999/ninjarmmpy.git`
