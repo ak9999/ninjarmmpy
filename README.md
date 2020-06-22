@@ -17,6 +17,10 @@ This library is far from finished.
 
 ## Installation
 
-Not on PyPI yet, but you can run the following to install the module + dependencies:
+Installing directly from [PyPI](https://pypi.org/project/ninjarmmpy/):
+
+`pip install ninjarmmpy`
+
+You can install straight from the master branch by running:
 
 `pip install git+https://github.com/ak9999/ninjarmmpy.git`
