@@ -1,6 +1,8 @@
 from functools import wraps
+import json
 import requests
 from ninjarmmpy.auth import NinjaAuthentication
+
 
 def return_response(fn):
     @wraps(fn)
@@ -8,7 +10,7 @@ def return_response(fn):
         response = fn(*args, **kwargs)
         if not response.status_code:
             return response.status_code
-        return response.text
+        return json.loads(response.text)
     return wrapped
 
 
