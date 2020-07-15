@@ -13,7 +13,7 @@ class OrganizationMixin():
 
     # Organization info
     @return_response
-    def get_organization_devices(self, id: int = None, pageSize: int = None, after: int = None) -> requests.Response:
+    def get_organization_devices(self, id: int = None, pageSize: int = None, after: int = None):
         """Returns list of organizations (Brief mode)
 
         Keyword arguments:
@@ -28,7 +28,7 @@ class OrganizationMixin():
     
 
     @return_response
-    def get_organization_locations(self, id: int = None) -> requests.Response:
+    def get_organization_locations(self, id: int = None):
         """Returns list of locations for organization
 
         Keyword arguments:
@@ -40,7 +40,7 @@ class OrganizationMixin():
     
 
     @return_response
-    def get_organization_details(self, id: int = None) -> requests.Response:
+    def get_organization_details(self, id: int = None):
         """Returns organization details (policy mapping, locations)
 
         Keyword arguments:
@@ -52,7 +52,7 @@ class OrganizationMixin():
     
 
     @return_response
-    def get_organization_endusers(self, id: int = None) -> requests.Response:
+    def get_organization_endusers(self, id: int = None):
         """Returns list of end-users for organization
 
         Keyword arguments:

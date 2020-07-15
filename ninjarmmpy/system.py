@@ -27,7 +27,7 @@ class SystemMixin():
 
     # Core system Entities and Resources
     @return_response
-    def get_organizations(self, pageSize: int = None, after: int = None) -> requests.Response:
+    def get_organizations(self, pageSize: int = None, after: int = None):
         """Returns list of organizations (Brief mode)
 
         Keyword arguments:
@@ -39,7 +39,7 @@ class SystemMixin():
 
 
     @return_response
-    def get_attachment(self, id: str) -> requests.Response:
+    def get_attachment(self, id: str):
         """Returns attachment (image, document)
 
         Keyword arguments:
@@ -49,7 +49,7 @@ class SystemMixin():
 
 
     @return_response
-    def get_groups(self, lang: str = None) -> requests.Response:
+    def get_groups(self, lang: str = None):
         """List groups (saved searches)
         Returns list of groups
 
@@ -64,7 +64,7 @@ class SystemMixin():
     def get_activities(self, activityClass: str = 'ALL', before: str = None, after: str = None,
             olderThan: int = None, newerThan: int = None, activityType: str = None,
             status: str = None, user: str = None, seriesUid: str = None,
-            df: str = None, pageSize: int = 200, lang: str = 'en', tz: str = None) -> requests.Response:
+            df: str = None, pageSize: int = 200, lang: str = 'en', tz: str = None):
         """List activities
         Returns activity log in reverse chronological order
 
@@ -102,7 +102,7 @@ class SystemMixin():
 
 
     @return_response
-    def get_users(self, userType: str = None) -> requests.Response:
+    def get_users(self, userType: str = None):
         """List users
         Returns list of users
 
@@ -116,7 +116,7 @@ class SystemMixin():
 
 
     @return_response
-    def get_devices(self, df: str = None, pageSize: int = None, after: int = None) -> requests.Response:
+    def get_devices(self, df: str = None, pageSize: int = None, after: int = None):
         """List devices
         Returns list of devices (basic node information)
 
@@ -134,19 +134,19 @@ class SystemMixin():
 
 
     @return_response
-    def get_policies(self) -> requests.Response:
+    def get_policies(self):
         """Returns list of policies"""
         return self.api_get_request(self.NINJA_API_POLICIES)
 
 
     @return_response
-    def get_software_products(self) -> requests.Response:
+    def get_software_products(self):
         """Returns available software products (3rd party patching)"""
         return self.api_get_request(self.NINJA_API_SOFTWARE_PRODUCTS)
 
 
     @return_response
-    def get_devices_detailed(self, df: str = None, pageSize: int = None, after: int = None) -> requests.Response:
+    def get_devices_detailed(self, df: str = None, pageSize: int = None, after: int = None):
         """Returns list of devices with additional information"""
         params = {
             'df': df,
@@ -157,7 +157,7 @@ class SystemMixin():
 
 
     @return_response
-    def get_alerts(self, sourceType: str = None, df: str = None, lang: str = None, tz: str = None) -> requests.Response:
+    def get_alerts(self, sourceType: str = None, df: str = None, lang: str = None, tz: str = None):
         """Returns list of devices with additional information"""
         params = {
             'sourceType': sourceType,
@@ -169,7 +169,7 @@ class SystemMixin():
 
 
     @return_response
-    def get_jobs(self, jobType: str = None, df: str = None, lang: str = None, tz: str = None) -> requests.Response:
+    def get_jobs(self, jobType: str = None, df: str = None, lang: str = None, tz: str = None):
         """Returns a list of running jobs
         Keyword arguments:
         jobType: str        -- Job Type filter
@@ -187,13 +187,13 @@ class SystemMixin():
 
 
     @return_response
-    def get_tasks(self) -> requests.Response:
+    def get_tasks(self):
         """Returns a list of registered scheduled tasks"""
         return self.api_get_request(self.NINJA_API_TASKS)
     
 
     @return_response
-    def get_organizations_detailed(self, pageSize: int = None, after: int = None) -> requests.Response:
+    def get_organizations_detailed(self, pageSize: int = None, after: int = None):
         """Returns a list of organizations with locations and policy mappings
         Keyword arguments:
         pageSize: int       -- Limit number of organizations to return
@@ -207,7 +207,7 @@ class SystemMixin():
     
 
     @return_response
-    def get_locations(self, pageSize: int = None, after: int = None) -> requests.Response:
+    def get_locations(self, pageSize: int = None, after: int = None):
         """Returns a list of all locations for all organizations
         Keyword arguments:
         pageSize: int       -- Limit number of organizations to return
@@ -221,6 +221,6 @@ class SystemMixin():
     
 
     @return_response
-    def get_roles(self) -> requests.Response:
+    def get_roles(self):
         """Returns a list of device roles"""
         return self.api_get_request(self.NINJA_API_ROLES)

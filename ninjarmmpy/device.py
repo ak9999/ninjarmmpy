@@ -13,7 +13,7 @@ class DeviceMixin():
 
 
     @return_response
-    def get_device_details(self, id: int = None) -> requests.Response:
+    def get_device_details(self, id: int = None):
         """Returns device details
 
         Keyword arguments:
@@ -27,7 +27,7 @@ class DeviceMixin():
     @return_response
     def get_device_activities(self, id: int = None, olderThan: int = None, newerThan: int = None,
             activityType: str = None, status: str = None, seriesUid: str = None,
-            pageSize: int = None, lang: str = None, tz: str = None) -> requests.Response:
+            pageSize: int = None, lang: str = None, tz: str = None):
         """List activities
         Returns activity log in reverse chronological order
 
@@ -58,7 +58,7 @@ class DeviceMixin():
     
 
     @return_response
-    def get_device_disks(self, id: int = None) -> requests.Response:
+    def get_device_disks(self, id: int = None):
         """Returns device disks' details
 
         Keyword arguments:
@@ -70,7 +70,7 @@ class DeviceMixin():
     
 
     @return_response
-    def get_device_processors(self, id: int = None) -> requests.Response:
+    def get_device_processors(self, id: int = None):
         """Returns list of device Processor details
 
         Keyword arguments:
@@ -82,7 +82,7 @@ class DeviceMixin():
 
 
     @return_response
-    def get_device_software(self, id: int = None) -> requests.Response:
+    def get_device_software(self, id: int = None):
         """Returns list of software installed on device
 
         Keyword arguments:
@@ -94,7 +94,7 @@ class DeviceMixin():
 
 
     @return_response
-    def get_device_last_logged_on_user(self, id: int = None) -> requests.Response:
+    def get_device_last_logged_on_user(self, id: int = None):
         """Returns username that was last to login to device
 
         Keyword arguments:
@@ -106,7 +106,7 @@ class DeviceMixin():
 
 
     @return_response
-    def get_device_volumes(self, id: int = None) -> requests.Response:
+    def get_device_volumes(self, id: int = None):
         """Returns device volumes' details
 
         Keyword arguments:
@@ -118,7 +118,7 @@ class DeviceMixin():
 
 
     @return_response
-    def get_device_alerts(self, id: int = None, lang: str = None, tz: str = None) -> requests.Response:
+    def get_device_alerts(self, id: int = None, lang: str = None, tz: str = None):
         """Returns list of active alerts (triggered conditions) for device
 
         Keyword arguments:
@@ -130,7 +130,7 @@ class DeviceMixin():
 
 
     @return_response
-    def get_device_os_patches(self, id: int = None, status: str = None, patchType: str = None, severity: str = None) -> requests.Response:
+    def get_device_os_patches(self, id: int = None, status: str = None, patchType: str = None, severity: str = None):
         """Returns list of pending/rejected/approved OS patches for device
 
         Keyword arguments:
@@ -150,7 +150,7 @@ class DeviceMixin():
 
 
     @return_response
-    def get_device_os_patch_installs(self, id: int = None, status: str = None, installedBefore: str = None, installedAfter: str = None) -> requests.Response:
+    def get_device_os_patch_installs(self, id: int = None, status: str = None, installedBefore: str = None, installedAfter: str = None):
         """Returns patch installation history records (successful and failed) for device
 
         Keyword arguments:
@@ -171,7 +171,7 @@ class DeviceMixin():
 
     @return_response
     def get_device_software_patches(self, id: int = None, status: str = None, productIdentifier: str = None,
-        patchType: str = None, patchImpact: str = None) -> requests.Response:
+        patchType: str = None, patchImpact: str = None):
         """Returns list of 3rd party Software patches for a device (for which there were no installation attempts)
 
         Keyword arguments:
@@ -194,7 +194,7 @@ class DeviceMixin():
 
     @return_response
     def get_device_software_patch_installs(self, id: int = None, status: str = None, productIdentifier: str = None,
-        patchType: str = None, patchImpact: str = None, installedBefore: str = None, installedAfter: str = None) -> requests.Response:
+        patchType: str = None, patchImpact: str = None, installedBefore: str = None, installedAfter: str = None):
         """Returns 3rd party software patch installation history records for device (successful and failed)
 
         Keyword arguments:
@@ -221,7 +221,7 @@ class DeviceMixin():
 
     @return_response
     def get_device_windows_services(self, id: int = None, name: str = None, state: str = None,
-        patchType: str = None, patchImpact: str = None) -> requests.Response:
+        patchType: str = None, patchImpact: str = None):
         """Returns list of 3rd party Software patches for a device (for which there were no installation attempts)
 
         Keyword arguments:
@@ -239,7 +239,7 @@ class DeviceMixin():
 
 
     @return_response
-    def get_device_jobs(self, id: int = None, lang: str = None, tz: str = None) -> requests.Response:
+    def get_device_jobs(self, id: int = None, lang: str = None, tz: str = None):
         """Returns currently running jobs for device
 
         Keyword arguments:
