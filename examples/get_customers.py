@@ -10,8 +10,8 @@ client = ninjarmmpy.Client(
         Europe=False
     )
 
-# As of this moment, the NinjaRMMPy package does not automatically convert the JSON into Python objects
-# So we need to do it ourselves.
+# As of this moment, the NinjaRMMPy package does not automatically convert the
+#   JSON into Python objects, so we need to do it ourselves.
 organizations = json.loads(client.get_organizations())
 # Now we can print the organizations out to the terminal.
 print(organizations)
