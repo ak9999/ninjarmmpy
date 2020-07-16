@@ -1,6 +1,5 @@
-# from .utils import return_response, api_get_request
+from .utils import return_response, api_get_request  # noqa, flake8 issue
 
-# import requests
 
 class QueriesMixin():
     # Queries
@@ -25,3 +24,39 @@ class QueriesMixin():
 
     def __init__(self):
         pass
+
+    @return_response
+    def get_raid_controllers(self, df: str = None, ts: str = None, cursor: str = None, pageSize: int = None):
+        """Returns list of RAID controllers
+
+        Keyword arguments:
+        df: str       -- Device filter
+        ts: str       -- Monitoring timestamp filter
+        cursor: str   -- Cursor name
+        pageSize: int -- Limit number of records per page
+        """
+        params = {
+            'df': df,
+            'ts': ts,
+            'cursor': cursor,
+            'pageSize': pageSize
+        }
+        return self.api_get_request(f'{self.NINJA_API_QUERIES_RAID_CONTROLLERS}', params=params)
+
+    @return_response
+    def get_raid_drives(self, df: str = None, ts: str = None, cursor: str = None, pageSize: int = None):
+        """Returns list of drives connected to RAID controllers
+
+        Keyword arguments:
+        df: str       -- Device filter
+        ts: str       -- Monitoring timestamp filter
+        cursor: str   -- Cursor name
+        pageSize: int -- Limit number of records per page
+        """
+        params = {
+            'df': df,
+            'ts': ts,
+            'cursor': cursor,
+            'pageSize': pageSize
+        }
+        return self.api_get_request(f'{self.NINJA_API_QUERIES_RAID_DRIVES}', params=params)
