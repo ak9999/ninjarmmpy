@@ -1,6 +1,5 @@
 from .utils import return_response, api_get_request
 
-import requests
 
 class GroupsMixin():
     # Groups

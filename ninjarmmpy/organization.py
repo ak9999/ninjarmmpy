@@ -1,6 +1,5 @@
 from .utils import return_response, api_get_request
 
-import requests
 
 class OrganizationMixin():
     # Organization
@@ -25,7 +24,6 @@ class OrganizationMixin():
             raise ValueError('id needs to be set to an organizational identifier.')
         params = {'id': id, 'pageSize': pageSize, 'after': after}
         return self.api_get_request(f'{self.NINJA_API_ORGANIZATION}{id}/devices', params=params)
-    
 
     @return_response
     def get_organization_locations(self, id: int = None):
@@ -37,7 +35,6 @@ class OrganizationMixin():
         if not id:
             raise ValueError('id needs to be set to an organizational identifier.')
         return self.api_get_request(f'{self.NINJA_API_ORGANIZATION}{id}/locations')
-    
 
     @return_response
     def get_organization_details(self, id: int = None):
@@ -49,7 +46,6 @@ class OrganizationMixin():
         if not id:
             raise ValueError('id needs to be set to an organizational identifier.')
         return self.api_get_request(f'{self.NINJA_API_ORGANIZATION}{id}')
-    
 
     @return_response
     def get_organization_endusers(self, id: int = None):

@@ -1,6 +1,5 @@
 from .utils import return_response, api_get_request
 
-import requests
 
 class DeviceMixin():
     # Devices
@@ -10,7 +9,6 @@ class DeviceMixin():
 
     def __init__(self):
         pass
-
 
     @return_response
     def get_device_details(self, id: int = None):
@@ -22,7 +20,6 @@ class DeviceMixin():
         if not id:
             raise ValueError('id needs to be set to an organizational identifier.')
         return self.api_get_request(f'{self.NINJA_API_DEVICE}{id}')
-    
 
     @return_response
     def get_device_activities(self, id: int = None, olderThan: int = None, newerThan: int = None,
@@ -55,7 +52,6 @@ class DeviceMixin():
             'tz': tz
         }
         return self.api_get_request(f'{self.NINJA_API_DEVICE}{id}/activities', params=params)
-    
 
     @return_response
     def get_device_disks(self, id: int = None):
@@ -67,7 +63,6 @@ class DeviceMixin():
         if not id:
             raise ValueError('id needs to be set to an organizational identifier.')
         return self.api_get_request(f'{self.NINJA_API_DEVICE}{id}/disks')
-    
 
     @return_response
     def get_device_processors(self, id: int = None):
@@ -80,7 +75,6 @@ class DeviceMixin():
             raise ValueError('id needs to be set to an organizational identifier.')
         return self.api_get_request(f'{self.NINJA_API_DEVICE}{id}/processors')
 
-
     @return_response
     def get_device_software(self, id: int = None):
         """Returns list of software installed on device
@@ -91,7 +85,6 @@ class DeviceMixin():
         if not id:
             raise ValueError('id needs to be set to an organizational identifier.')
         return self.api_get_request(f'{self.NINJA_API_DEVICE}{id}/software')
-
 
     @return_response
     def get_device_last_logged_on_user(self, id: int = None):
@@ -104,7 +97,6 @@ class DeviceMixin():
             raise ValueError('id needs to be set to an organizational identifier.')
         return self.api_get_request(f'{self.NINJA_API_DEVICE}{id}/last-logged-on-user')
 
-
     @return_response
     def get_device_volumes(self, id: int = None):
         """Returns device volumes' details
@@ -116,7 +108,6 @@ class DeviceMixin():
             raise ValueError('id needs to be set to an organizational identifier.')
         return self.api_get_request(f'{self.NINJA_API_DEVICE}{id}/volumes')
 
-
     @return_response
     def get_device_alerts(self, id: int = None, lang: str = None, tz: str = None):
         """Returns list of active alerts (triggered conditions) for device
@@ -127,7 +118,6 @@ class DeviceMixin():
         if not id:
             raise ValueError('id needs to be set to an organizational identifier.')
         return self.api_get_request(f'{self.NINJA_API_DEVICE}{id}/alerts')
-
 
     @return_response
     def get_device_os_patches(self, id: int = None, status: str = None, patchType: str = None, severity: str = None):
@@ -148,7 +138,6 @@ class DeviceMixin():
         }
         return self.api_get_request(f'{self.NINJA_API_DEVICE}{id}/os-patches', params=params)
 
-
     @return_response
     def get_device_os_patch_installs(self, id: int = None, status: str = None, installedBefore: str = None, installedAfter: str = None):
         """Returns patch installation history records (successful and failed) for device
@@ -167,7 +156,6 @@ class DeviceMixin():
             'installedAfter': installedAfter
         }
         return self.api_get_request(f'{self.NINJA_API_DEVICE}{id}/os-patch-installs', params=params)
-
 
     @return_response
     def get_device_software_patches(self, id: int = None, status: str = None, productIdentifier: str = None,
@@ -218,7 +206,6 @@ class DeviceMixin():
         }
         return self.api_get_request(f'{self.NINJA_API_DEVICE}{id}/software-patch-installs', params=params)
 
-
     @return_response
     def get_device_windows_services(self, id: int = None, name: str = None, state: str = None,
         patchType: str = None, patchImpact: str = None):
@@ -236,7 +223,6 @@ class DeviceMixin():
             'state': state
         }
         return self.api_get_request(f'{self.NINJA_API_DEVICE}{id}/windows-services', params=params)
-
 
     @return_response
     def get_device_jobs(self, id: int = None, lang: str = None, tz: str = None):

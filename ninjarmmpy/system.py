@@ -1,6 +1,5 @@
 from .utils import return_response, api_get_request
 
-import requests
 
 class SystemMixin():
     # System Endpoints
@@ -47,7 +46,6 @@ class SystemMixin():
         """
         return self.api_get_request(f'{self.NINJA_API_ATTACHMENT}{id}')
 
-
     @return_response
     def get_groups(self, lang: str = None):
         """List groups (saved searches)
@@ -58,7 +56,6 @@ class SystemMixin():
         """
         params = {'lang': lang}
         return self.api_get_request(f'{self.NINJA_API_GROUPS}', params=params)
-
 
     @return_response
     def get_activities(self, activityClass: str = 'ALL', before: str = None, after: str = None,
@@ -100,7 +97,6 @@ class SystemMixin():
         }
         return self.api_get_request(f'{self.NINJA_API_ACTIVITIES}', params=params)
 
-
     @return_response
     def get_users(self, userType: str = None):
         """List users
@@ -113,7 +109,6 @@ class SystemMixin():
         """
         params = {'userType': userType}
         return self.api_get_request(self.NINJA_API_USERS, params=params)
-
 
     @return_response
     def get_devices(self, df: str = None, pageSize: int = None, after: int = None):
@@ -132,18 +127,15 @@ class SystemMixin():
         }
         return self.api_get_request(self.NINJA_API_DEVICES, params=params)
 
-
     @return_response
     def get_policies(self):
         """Returns list of policies"""
         return self.api_get_request(self.NINJA_API_POLICIES)
 
-
     @return_response
     def get_software_products(self):
         """Returns available software products (3rd party patching)"""
         return self.api_get_request(self.NINJA_API_SOFTWARE_PRODUCTS)
-
 
     @return_response
     def get_devices_detailed(self, df: str = None, pageSize: int = None, after: int = None):
@@ -155,7 +147,6 @@ class SystemMixin():
         }
         return self.api_get_request(self.NINJA_API_DEVICES_DETAILED, params=params)
 
-
     @return_response
     def get_alerts(self, sourceType: str = None, df: str = None, lang: str = None, tz: str = None):
         """Returns list of devices with additional information"""
@@ -166,7 +157,6 @@ class SystemMixin():
             'tz': tz
         }
         return self.api_get_request(self.NINJA_API_ALERTS, params=params)
-
 
     @return_response
     def get_jobs(self, jobType: str = None, df: str = None, lang: str = None, tz: str = None):
@@ -185,12 +175,10 @@ class SystemMixin():
         }
         return self.api_get_request(self.NINJA_API_JOBS, params=params)
 
-
     @return_response
     def get_tasks(self):
         """Returns a list of registered scheduled tasks"""
         return self.api_get_request(self.NINJA_API_TASKS)
-    
 
     @return_response
     def get_organizations_detailed(self, pageSize: int = None, after: int = None):
@@ -204,7 +192,6 @@ class SystemMixin():
             'after': after
         }
         return self.api_get_request(self.NINJA_API_ORGANIZATIONS_DETAILED, params=params)
-    
 
     @return_response
     def get_locations(self, pageSize: int = None, after: int = None):
@@ -218,7 +205,6 @@ class SystemMixin():
             'after': after
         }
         return self.api_get_request(self.NINJA_API_LOCATIONS, params=params)
-    
 
     @return_response
     def get_roles(self):
