@@ -8,7 +8,7 @@ client = ninjarmmpy.Client(
         SecretAccessKey=os.environ.get('NRMM_SECRET'),
         Europe=False
     )
-
+# Get list of organizations!
 organizations = client.get_organizations()
 # Now we can print the organizations out to the terminal.
 print(organizations)
