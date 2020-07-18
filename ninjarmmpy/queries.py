@@ -172,8 +172,9 @@ class QueriesMixin():
         return self.api_get_request(f'{self.NINJA_API_QUERIES_SOFTWARE}', params=params)
 
     @return_response
-    def get_os_patches(self, df: str = None, ts: str = None, status: str = None, 
-        patch_type: str = None, severity: str = None, cursor: str = None, pageSize: int = None):
+    def get_os_patches(self, df: str = None, ts: str = None, status: str = None,
+                       patch_type: str = None, severity: str = None, cursor: str = None,
+                       pageSize: int = None):
         """Returns list of OS patches for which there were no installation attempts
 
         Keyword arguments:
