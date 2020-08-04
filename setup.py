@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="ninjarmmpy",
-    version="0.0.6",
+    version="0.1.0",
     author="Abdullah 'AJ' Khan",
     author_email="aj@ajkhan.me",
     description="Unofficial API client wrapper around v2 of the NinjaRMM API",
