@@ -12,9 +12,8 @@ class GroupsMixin():
 
     # Organization info
     @return_response
-    def get_group_device_ids(self, id: int = None, refresh: bool = None):
+    def getGroupDeviceIds(self, id: int = None, refresh: bool = None):
         """Returns list of device identifiers that match group criteria
-
         Keyword arguments:
         id: int       -- Group identifier, required, no default provided.
         refresh: str  -- refresh group?
