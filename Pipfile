@@ -7,6 +7,6 @@ verify_ssl = true
 
 [packages]
 ninjarmmpy = {editable = true, path = "."}
+requests = "*"
 
 [requires]
-python_version = "3.8"
