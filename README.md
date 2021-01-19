@@ -2,13 +2,19 @@
 
 ## What is this repository for?
 
-Unoffical [NinjaRMM API v2](https://ninjarmm.com/dev-api/) client for Python.
-
-v2 API docs available here: https://app.ninjarmm.com/apidocs/
+Unoffical [NinjaRMM API v2](https://app.ninjarmm.com/apidocs/) client for Python.
 
 Inspired by [py-ninjarmm-api-client](https://pypi.org/project/py-ninjarmm-api-client/)
 
-This library is far from finished.
+This library is currently not yet finished.
+
+### Note
+
+`ninjarmmpy` versions `0.2` and higher use the function names as named in the
+NinjaRMM documentation. This is a breaking change from past versions.
+
+If you are not yet able to update your function calls to use the new function names,
+then you should continue to use version `0.1.1a`.
 
 ## Requirements
 
