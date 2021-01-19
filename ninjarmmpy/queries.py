@@ -26,9 +26,8 @@ class QueriesMixin():
         pass
 
     @return_response
-    def get_antivirus_threats(self, df: str = None, ts: str = None, cursor: str = None, pageSize: int = None):
+    def getAntivirusThreats(self, df: str = None, ts: str = None, cursor: str = None, pageSize: int = None):
         """Returns list of antivirus threats
-
         Keyword arguments:
         df: str       -- Device filter
         ts: str       -- Monitoring timestamp filter
@@ -44,9 +43,8 @@ class QueriesMixin():
         return self.api_get_request(f'{self.NINJA_API_QUERIES_ANTIVIRUS_THREATS}', params=params)
 
     @return_response
-    def get_operating_systems(self, df: str = None, ts: str = None, cursor: str = None, pageSize: int = None):
+    def getOperatingSystems(self, df: str = None, ts: str = None, cursor: str = None, pageSize: int = None):
         """Returns operating systems for devices
-
         Keyword arguments:
         df: str       -- Device filter
         ts: str       -- Monitoring timestamp filter
@@ -62,9 +60,8 @@ class QueriesMixin():
         return self.api_get_request(f'{self.NINJA_API_QUERIES_OPERATING_SYSTEMS}', params=params)
 
     @return_response
-    def get_processors(self, df: str = None, ts: str = None, cursor: str = None, pageSize: int = None):
+    def getProcessors(self, df: str = None, ts: str = None, cursor: str = None, pageSize: int = None):
         """Returns list of processors
-
         Keyword arguments:
         df: str       -- Device filter
         ts: str       -- Monitoring timestamp filter
@@ -80,9 +77,8 @@ class QueriesMixin():
         return self.api_get_request(f'{self.NINJA_API_QUERIES_PROCESSORS}', params=params)
 
     @return_response
-    def get_volumes(self, df: str = None, ts: str = None, cursor: str = None, pageSize: int = None):
+    def getVolumes(self, df: str = None, ts: str = None, cursor: str = None, pageSize: int = None):
         """Returns list of disk volumes
-
         Keyword arguments:
         df: str       -- Device filter
         ts: str       -- Monitoring timestamp filter
@@ -98,9 +94,8 @@ class QueriesMixin():
         return self.api_get_request(f'{self.NINJA_API_QUERIES_VOLUMES}', params=params)
 
     @return_response
-    def get_disks(self, df: str = None, ts: str = None, cursor: str = None, pageSize: int = None):
+    def getDiskDrives(self, df: str = None, ts: str = None, cursor: str = None, pageSize: int = None):
         """Returns list of physical disks
-
         Keyword arguments:
         df: str       -- Device filter
         ts: str       -- Monitoring timestamp filter
@@ -116,9 +111,8 @@ class QueriesMixin():
         return self.api_get_request(f'{self.NINJA_API_QUERIES_DISKS}', params=params)
 
     @return_response
-    def get_computer_systems(self, df: str = None, ts: str = None, cursor: str = None, pageSize: int = None):
+    def getComputerSystems(self, df: str = None, ts: str = None, cursor: str = None, pageSize: int = None):
         """Returns computer systems information for devices
-
         Keyword arguments:
         df: str       -- Device filter
         ts: str       -- Monitoring timestamp filter
@@ -134,9 +128,8 @@ class QueriesMixin():
         return self.api_get_request(f'{self.NINJA_API_QUERIES_COMPUTER_SYSTEMS}', params=params)
 
     @return_response
-    def get_device_health(self, df: str = None, ts: str = None, cursor: str = None, pageSize: int = None):
-        """Returns list of device health summary reports
-
+    def getDeviceHealthReport(self, df: str = None, ts: str = None, cursor: str = None, pageSize: int = None):
+        """Returns list of device health summary records
         Keyword arguments:
         df: str       -- Device filter
         ts: str       -- Monitoring timestamp filter
@@ -152,9 +145,8 @@ class QueriesMixin():
         return self.api_get_request(f'{self.NINJA_API_QUERIES_DEVICE_HEALTH}', params=params)
 
     @return_response
-    def get_software_list(self, df: str = None, cursor: str = None, pageSize: int = None, installedBefore: str = None, installedAfter: str = None):
+    def getSoftware(self, df: str = None, cursor: str = None, pageSize: int = None, installedBefore: str = None, installedAfter: str = None):
         """Returns list of software installed on devices
-
         Keyword arguments:
         df: str              -- Device filter
         cursor: str          -- Cursor name
@@ -172,11 +164,10 @@ class QueriesMixin():
         return self.api_get_request(f'{self.NINJA_API_QUERIES_SOFTWARE}', params=params)
 
     @return_response
-    def get_os_patches(self, df: str = None, ts: str = None, status: str = None,
+    def getPendingFailedRejectedOSPatches(self, df: str = None, ts: str = None, status: str = None,
                        patch_type: str = None, severity: str = None, cursor: str = None,
                        pageSize: int = None):
         """Returns list of OS patches for which there were no installation attempts
-
         Keyword arguments:
         df: str              -- Device filter
         ts: str              -- Monitoring timestamp filter
@@ -198,9 +189,8 @@ class QueriesMixin():
         return self.api_get_request(f'{self.NINJA_API_QUERIES_OS_PATCHES}', params=params)
 
     @return_response
-    def get_os_patch_installs(self, df: str = None, status: str = None, cursor: str = None, pageSize: int = None, installedBefore: str = None, installedAfter: str = None):
+    def getInstalledOSPatches(self, df: str = None, status: str = None, cursor: str = None, pageSize: int = None, installedBefore: str = None, installedAfter: str = None):
         """Returns pach installation history records, successful and failed
-
         Keyword arguments:
         df: str              -- Device filter
         status: str          -- Patch Status filter (FAILED, INSTALLED)
@@ -211,6 +201,7 @@ class QueriesMixin():
         """
         params = {
             'df': df,
+            'status': status,
             'cursor': cursor,
             'pageSize': pageSize,
             'installedBefore': installedBefore,
@@ -219,11 +210,10 @@ class QueriesMixin():
         return self.api_get_request(f'{self.NINJA_API_QUERIES_OS_PATCH_INSTALLS}', params=params)
 
     @return_response
-    def get_software_patches(self, df: str = None, ts: str = None, status: str = None,
+    def getPendingFailedRejectedSoftwarePatches(self, df: str = None, ts: str = None, status: str = None,
                              productIdentifier: str = None, patch_type: str = None, impact: str = None,
                              cursor: str = None, pageSize: int = None):
-        """Returns list of OS patches for which there were no installation attempts
-
+        """Returns list of 3rd party Software patches for which there were no installation attempts
         Keyword arguments:
         df: str                         -- Device filter
         ts: str                         -- Monitoring timestamp filter
@@ -247,12 +237,11 @@ class QueriesMixin():
         return self.api_get_request(f'{self.NINJA_API_QUERIES_SOFTWARE_PATCHES}', params=params)
 
     @return_response
-    def get_software_patch_installs(self, df: str = None, ts: str = None, status: str = None,
+    def getInstalledSoftwarePatches(self, df: str = None, ts: str = None, status: str = None,
                                     productIdentifier: str = None, patch_type: str = None, impact: str = None,
                                     cursor: str = None, pageSize: int = None,
                                     installedBefore: str = None, installedAfter: str = None):
         """Returns 3rd party software patch installation history records (successful and failed)
-
         Keyword arguments:
         df: str                         -- Device filter
         ts: str                         -- Monitoring timestamp filter
@@ -280,9 +269,8 @@ class QueriesMixin():
         return self.api_get_request(f'{self.NINJA_API_QUERIES_SOFTWARE_PATCH_INSTALLS}', params=params)
 
     @return_response
-    def get_raid_controllers(self, df: str = None, ts: str = None, cursor: str = None, pageSize: int = None):
+    def getRAIDControllerReport(self, df: str = None, ts: str = None, cursor: str = None, pageSize: int = None):
         """Returns list of RAID controllers
-
         Keyword arguments:
         df: str       -- Device filter
         ts: str       -- Monitoring timestamp filter
@@ -298,9 +286,8 @@ class QueriesMixin():
         return self.api_get_request(f'{self.NINJA_API_QUERIES_RAID_CONTROLLERS}', params=params)
 
     @return_response
-    def get_raid_drives(self, df: str = None, ts: str = None, cursor: str = None, pageSize: int = None):
+    def getRAIDDriveReport(self, df: str = None, ts: str = None, cursor: str = None, pageSize: int = None):
         """Returns list of drives connected to RAID controllers
-
         Keyword arguments:
         df: str       -- Device filter
         ts: str       -- Monitoring timestamp filter
@@ -316,9 +303,8 @@ class QueriesMixin():
         return self.api_get_request(f'{self.NINJA_API_QUERIES_RAID_DRIVES}', params=params)
 
     @return_response
-    def get_windows_services(self, df: str = None, name: str = None, state: str = None, cursor: str = None, pageSize: int = None):
+    def getWindowsServicesReport(self, df: str = None, name: str = None, state: str = None, cursor: str = None, pageSize: int = None):
         """Returns list of Windows Services and their statuses
-
         Keyword arguments:
         df: str         -- Device filter
         name: str       -- Service name
@@ -336,7 +322,7 @@ class QueriesMixin():
         return self.api_get_request(f'{self.NINJA_API_QUERIES_WINDOWS_SERVICES}', params=params)
 
     @return_response
-    def get_logged_on_users(self, df: str = None, cursor: str = None, pageSize: int = 1000):
+    def getLastLoggedOnUsersReport(self, df: str = None, cursor: str = None, pageSize: int = 1000):
         """Returns usernames and logon times
 
         Keyword arguments:
@@ -352,10 +338,9 @@ class QueriesMixin():
         return self.api_get_request(f'{self.NINJA_API_QUERIES_LOGGED_ON_USERS}', params=params)
 
     @return_response
-    def get_antivirus_status(self, df: str = None, ts: str = None, productState: str = None,
+    def getAntivirusStatusReport(self, df: str = None, ts: str = None, productState: str = None,
                              productName: str = None, cursor: str = None, pageSize: int = None):
-        """Returns usernames and logon times
-
+        """Returns list of statues of antivirus software installed on devices
         Keyword arguments:
         df: str                 -- Device filter
         ts: str                 -- Monitoring timestamp filter
