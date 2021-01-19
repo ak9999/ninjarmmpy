@@ -9,8 +9,8 @@ client = ninjarmmpy.Client(
     SecretAccessKey=os.environ.get('NRMM_SECRET'),
     Europe=False
 )
-# Get a list of os patches for all devices as Python dictionaries
-os_patches = client.get_os_patch_installs()
+# Get a list of os patches for 5 devices as Python dictionaries
+os_patches = client.getPendingFailedRejectedOSPatches(pageSize=5)
 # For this example, we're just going to convert the dictionaries to JSON and write them to a file.
 os_patches = json.dumps(os_patches)
 # Now we can write the results to a JSON file.

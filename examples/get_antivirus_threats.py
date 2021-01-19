@@ -9,8 +9,8 @@ client = ninjarmmpy.Client(
     SecretAccessKey=os.environ.get('NRMM_SECRET'),
     Europe=False
 )
-# Get antivirus threats for all devices as Python dictionaries
-threats = client.get_antivirus_threats()
+# Get antivirus threats for 5 devices as Python dictionaries
+threats = client.getAntivirusThreats(pageSize=5)
 # For this example, we're just going to convert the dictionaries to JSON and write them to a file.
 threats = json.dumps(threats)
 # Now we can write the results to a JSON file.

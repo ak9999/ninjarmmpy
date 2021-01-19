@@ -9,8 +9,8 @@ client = ninjarmmpy.Client(
     SecretAccessKey=os.environ.get('NRMM_SECRET'),
     Europe=False
 )
-# Get a list of volumes for all devices as Python dictionaries
-volumes = client.get_volumes()
+# Get a list of 5 volumes as Python dictionaries
+volumes = client.getVolumes(pageSize=5)
 # For this example, we're just going to convert the dictionaries to JSON and write them to a file.
 volumes = json.dumps(volumes)
 # Now we can write the results to a JSON file.

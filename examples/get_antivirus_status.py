@@ -9,7 +9,7 @@ client = ninjarmmpy.Client(
     SecretAccessKey=os.environ.get('NRMM_SECRET'),
     Europe=False
 )
-# Get antivirus statuses for all devices as Python dictionaries
+# Get antivirus statuses for 5 devices as Python dictionaries
 status = client.getAntivirusStatusReport(pageSize=5)
 # For this example, we're just going to convert the dictionaries to JSON and write them to a file.
 status = json.dumps(status)

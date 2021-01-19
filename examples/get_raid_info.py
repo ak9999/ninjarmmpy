@@ -10,8 +10,8 @@ client = ninjarmmpy.Client(
     Europe=False
 )
 # Get drives and controllers as Python dictionaries
-drives = client.get_raid_drives()
-controllers = client.get_raid_controllers()
+drives = client.getRAIDDriveReport(pageSize=5)
+controllers = client.getRAIDControllerReport(pageSize=5)
 # For this example, we're just going to convert the dictionaries to JSON and write them to a file.
 drives = json.dumps(drives)
 controllers = json.dumps(controllers)

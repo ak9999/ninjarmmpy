@@ -9,8 +9,8 @@ client = ninjarmmpy.Client(
     SecretAccessKey=os.environ.get('NRMM_SECRET'),
     Europe=False
 )
-# Get operating systems for all devices as Python dictionaries
-operating_systems = client.get_operating_systems()
+# Get operating systems for 5 devices as Python dictionaries
+operating_systems = client.getOperatingSystems(pageSize=5)
 # For this example, we're just going to convert the dictionaries to JSON and write them to a file.
 operating_systems = json.dumps(operating_systems)
 # Now we can write the results to a JSON file.
