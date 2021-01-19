@@ -11,9 +11,8 @@ class DeviceMixin():
         pass
 
     @return_response
-    def get_device_details(self, id: int = None):
+    def getDevice(self, id: int = None):
         """Returns device details
-
         Keyword arguments:
         id: int       -- Device identifier, required, no default provided.
         """
@@ -22,12 +21,11 @@ class DeviceMixin():
         return self.api_get_request(f'{self.NINJA_API_DEVICE}{id}')
 
     @return_response
-    def get_device_activities(self, id: int = None, olderThan: int = None, newerThan: int = None,
+    def getDeviceActivities(self, id: int = None, olderThan: int = None, newerThan: int = None,
             activityType: str = None, status: str = None, seriesUid: str = None,
             pageSize: int = None, lang: str = None, tz: str = None):
         """List activities
         Returns activity log in reverse chronological order
-
         Keyword arguments:
         id: int            -- Device identifier, required, no default provided.
         olderThan: int     -- Return activities recorded that are older than specified activity ID
@@ -54,18 +52,26 @@ class DeviceMixin():
         return self.api_get_request(f'{self.NINJA_API_DEVICE}{id}/activities', params=params)
 
     @return_response
-    def get_device_disks(self, id: int = None):
+    def getDeviceDiskDrives(self, id: int = None):
         """Returns device disks' details
-
         Keyword arguments:
         id: int            -- Device identifier, required, no default provided.
         """
         if not id:
             raise ValueError('id needs to be set to an organizational identifier.')
         return self.api_get_request(f'{self.NINJA_API_DEVICE}{id}/disks')
+    @return_response
+    def getDeviceVolumes(self, id: int = None):
+        """Returns device volumes' details
+        Keyword arguments:
+        id: int            -- Device identifier, required, no default provided.
+        """
+        if not id:
+            raise ValueError('id needs to be set to an organizational identifier.')
+        return self.api_get_request(f'{self.NINJA_API_DEVICE}{id}/volumes')
 
     @return_response
-    def get_device_processors(self, id: int = None):
+    def getDeviceProcessors(self, id: int = None):
         """Returns list of device Processor details
 
         Keyword arguments:
@@ -76,9 +82,8 @@ class DeviceMixin():
         return self.api_get_request(f'{self.NINJA_API_DEVICE}{id}/processors')
 
     @return_response
-    def get_device_software(self, id: int = None):
+    def getDeviceSoftware(self, id: int = None):
         """Returns list of software installed on device
-
         Keyword arguments:
         id: int            -- Device identifier, required, no default provided.
         """
@@ -87,9 +92,8 @@ class DeviceMixin():
         return self.api_get_request(f'{self.NINJA_API_DEVICE}{id}/software')
 
     @return_response
-    def get_device_last_logged_on_user(self, id: int = None):
+    def getDeviceLastLoggedOnUser(self, id: int = None):
         """Returns username that was last to login to device
-
         Keyword arguments:
         id: int            -- Device identifier, required, no default provided.
         """
@@ -98,18 +102,7 @@ class DeviceMixin():
         return self.api_get_request(f'{self.NINJA_API_DEVICE}{id}/last-logged-on-user')
 
     @return_response
-    def get_device_volumes(self, id: int = None):
-        """Returns device volumes' details
-
-        Keyword arguments:
-        id: int            -- Device identifier, required, no default provided.
-        """
-        if not id:
-            raise ValueError('id needs to be set to an organizational identifier.')
-        return self.api_get_request(f'{self.NINJA_API_DEVICE}{id}/volumes')
-
-    @return_response
-    def get_device_alerts(self, id: int = None, lang: str = None, tz: str = None):
+    def getDeviceAlerts(self, id: int = None, lang: str = None, tz: str = None):
         """Returns list of active alerts (triggered conditions) for device
 
         Keyword arguments:
@@ -120,9 +113,8 @@ class DeviceMixin():
         return self.api_get_request(f'{self.NINJA_API_DEVICE}{id}/alerts')
 
     @return_response
-    def get_device_os_patches(self, id: int = None, status: str = None, patchType: str = None, severity: str = None):
+    def getDevicePendingFailedRejectedOSPatches(self, id: int = None, status: str = None, patchType: str = None, severity: str = None):
         """Returns list of pending/rejected/approved OS patches for device
-
         Keyword arguments:
         id: int            -- Device identifier, required, no default provided.
         status: str        -- Patch status filter
@@ -139,9 +131,8 @@ class DeviceMixin():
         return self.api_get_request(f'{self.NINJA_API_DEVICE}{id}/os-patches', params=params)
 
     @return_response
-    def get_device_os_patch_installs(self, id: int = None, status: str = None, installedBefore: str = None, installedAfter: str = None):
+    def getDeviceInstalledOSPatches(self, id: int = None, status: str = None, installedBefore: str = None, installedAfter: str = None):
         """Returns patch installation history records (successful and failed) for device
-
         Keyword arguments:
         id: int                  -- Device identifier, required, no default provided.
         status: str              -- Patch Status filter (FAILED, INSTALLED)
@@ -158,10 +149,9 @@ class DeviceMixin():
         return self.api_get_request(f'{self.NINJA_API_DEVICE}{id}/os-patch-installs', params=params)
 
     @return_response
-    def get_device_software_patches(self, id: int = None, status: str = None, productIdentifier: str = None,
+    def getDevicePendingFailedRejectedSoftwarePatches(self, id: int = None, status: str = None, productIdentifier: str = None,
         patchType: str = None, patchImpact: str = None):
         """Returns list of 3rd party Software patches for a device (for which there were no installation attempts)
-
         Keyword arguments:
         id: int                  -- Device identifier, required, no default provided.
         status: str              -- Patch Status filter (FAILED, INSTALLED)
@@ -181,10 +171,9 @@ class DeviceMixin():
 
 
     @return_response
-    def get_device_software_patch_installs(self, id: int = None, status: str = None, productIdentifier: str = None,
+    def getDeviceInstalledSoftwarePatches(self, id: int = None, status: str = None, productIdentifier: str = None,
         patchType: str = None, patchImpact: str = None, installedBefore: str = None, installedAfter: str = None):
         """Returns 3rd party software patch installation history records for device (successful and failed)
-
         Keyword arguments:
         id: int                  -- Device identifier, required, no default provided.
         status: str              -- Patch Status filter (FAILED, INSTALLED)
@@ -207,10 +196,9 @@ class DeviceMixin():
         return self.api_get_request(f'{self.NINJA_API_DEVICE}{id}/software-patch-installs', params=params)
 
     @return_response
-    def get_device_windows_services(self, id: int = None, name: str = None, state: str = None,
+    def getDeviceServices(self, id: int = None, name: str = None, state: str = None,
         patchType: str = None, patchImpact: str = None):
-        """Returns list of 3rd party Software patches for a device (for which there were no installation attempts)
-
+        """Returns list of Windows services and their statuses
         Keyword arguments:
         id: int                  -- Device identifier, required, no default provided.
         name: str                -- Service name
@@ -225,9 +213,8 @@ class DeviceMixin():
         return self.api_get_request(f'{self.NINJA_API_DEVICE}{id}/windows-services', params=params)
 
     @return_response
-    def get_device_jobs(self, id: int = None, lang: str = None, tz: str = None):
+    def getDeviceActiveJobs(self, id: int = None, lang: str = None, tz: str = None):
         """Returns currently running jobs for device
-
         Keyword arguments:
         id: int                  -- Device identifier, required, no default provided.
         lang: str                -- language code
