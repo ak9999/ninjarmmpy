@@ -9,6 +9,6 @@ client = ninjarmmpy.Client(
     Europe=False
 )
 # Get list of organizations!
-organizations = client.get_organizations()
+organizations = client.getOrganizations()
 # Now we can print the organizations out to the terminal.
 print(organizations)
